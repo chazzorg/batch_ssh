@@ -15,12 +15,6 @@ app_user="root"
 # 目标服务器执行命令
 app_ssh=("chmod 700 /home/app.sh;/home/app.sh")
 
-# 本地需要发送的文件目录
-app_file="./scp/"
-
-# 目标服务器目录
-app_scp="/home/"
-
 # 目标服务器ip
 app_ips=(
     "xxxx"
@@ -34,9 +28,6 @@ test_user="root"
 
 # 目标服务器执行命令
 test_ssh=("chmod 700 /home/app.sh;/home/app.sh")
-
-# 目标服务器目录
-test_scp="/home/"
 
 # 目标服务器ip
 test_ips=(

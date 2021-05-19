@@ -6,8 +6,6 @@ funCheckApp(){
     if echo "${app_name[@]}" | grep -w "$app" &>/dev/null; then
         ips=($(eval echo '${'"$app"'_ips[@]}'))
         user=($(eval echo '${'"$app"'_user[@]}'))
-        file=($(eval echo '${'"$app"'_file[@]}'))
-        scp=($(eval echo '${'"$app"'_scp[@]}'))
     else
         echo "未授权项目"
         exit
@@ -17,7 +15,7 @@ funCheckApp(){
 # 复制脚本到目标服务器
 funCopy(){
     ip=$1
-    scp "${file[*]}${app}.sh" "${user[*]}"@${ip}:"${scp[*]}" >&/dev/null
+    scp "$file" "${user[*]}"@${ip}:"$to_file" >&/dev/null
     if [ $? -eq 0 ]; then
         echo -e "\033[32m ${app} $ip 执行成功 \033[0m"
     else
@@ -30,6 +28,18 @@ funCopy(){
 # 加载服务器配置
 source ./env
 app=$1
+file=$2
+to_file=$3
+
+if [ ! -e "$file" ]; then
+    echo -e "\033[31m 文件不存在，请重新选择!!!!!!!!! \033[0m"
+    exit
+fi
+
+if [ ! -n "$to_file" ]; then
+    echo -e "\033[31m 请输入目标服务器路径 \033[0m"
+    exit
+fi
 
 # 校验服务
 funCheckApp $app

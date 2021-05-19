@@ -31,9 +31,9 @@ vi env
 chmod 700 ./ssh.sh ./scp.sh
 ```
 
-3. 通过应用组远程发送文件。
+3. 通过应用组远程发送文件, ./scp.sh [应用名] [本地文件] [远程目录/远程路径]。
 ```bash
-./scp.sh app
+./scp.sh app ./scp/test.sh /home/
 ```
 
 4. 通过应用组远程执行命令。

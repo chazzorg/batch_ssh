@@ -19,6 +19,9 @@ batch_ssh 可以让你发送`shell`命令到N台服务器执行。
 **重要 ！！**
 使用该脚本之前，请使用  [batch_auth](https://github.com/chazzorg/batch_auth) 完成对目标服务器的授权 **
 
+#### 项目地址 ：[码云](https://gitee.com/chazzorg/batch_ssh)      [github](https://github.com/chazzorg/batch_ssh)
+
+
 **使用概览：**
 
 1. 编辑目录下`env`文件，配置服务器ip、用户等信息，参考示例配置

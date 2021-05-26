@@ -15,7 +15,11 @@ funCheckApp(){
 # 复制脚本到目标服务器
 funCopy(){
     ip=$1
-    scp "$file" "${user[*]}"@${ip}:"$to_file" >&/dev/null
+    if [ -d "$file" ]; then
+        scp -r "$file" "${user[*]}"@${ip}:"$to_file" >&/dev/null
+    else
+        scp "$file" "${user[*]}"@${ip}:"$to_file" >&/dev/null
+    fi
     if [ $? -eq 0 ]; then
         echo -e "\033[32m ${app} $ip 执行成功 \033[0m"
     else
